@@ -62,10 +62,56 @@ const Portfolio = () => {
     }
   ];
 
-  const skills = [
-    "JavaScript", "React", "Node.js", "Python", "MongoDB", "PostgreSQL",
-    "HTML5", "CSS3", "Git", "Docker", "AWS", "Express.js"
-  ];
+ const skills = [
+  {
+    name: "JavaScript",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+  },
+  {
+    name: "React",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+  },
+  {
+    name: "Node.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+  },
+  {
+    name: "Python",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+  },
+  {
+    name: "MongoDB",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+  },
+  {
+    name: "PostgreSQL",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+  },
+  {
+    name: "HTML5",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+  },
+  {
+    name: "CSS3",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+  },
+  {
+    name: "Git",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+  },
+  {
+    name: "Docker",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+  },
+  {
+    name: "AWS",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"
+  },
+  {
+    name: "Express.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+  }
+];
 
   const styles = {
     container: {
@@ -151,7 +197,7 @@ const Portfolio = () => {
       width: '200px',
       height: '200px',
       margin: '0 auto 2rem',
-      borderRadius: '50%',
+      borderRadius: '40%',
       background: 'linear-gradient(45deg, #a855f7, #ec4899)',
       padding: '4px',
       display: 'flex',
@@ -161,11 +207,18 @@ const Portfolio = () => {
     profileImageInner: {
       width: '100%',
       height: '100%',
-      borderRadius: '50%',
+      borderRadius: '40%',
       background: '#1f2937',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      overflow: 'hidden'
+    },
+    profileImg: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      borderRadius: '30%'
     },
     heroTitle: {
       fontSize: '3.5rem',
@@ -236,15 +289,27 @@ const Portfolio = () => {
       gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
       gap: '1rem'
     },
-    skillItem: {
-      background: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(5px)',
-      borderRadius: '0.5rem',
-      padding: '1rem',
-      textAlign: 'center',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer'
-    },
+  skillItem: {
+  background: 'rgba(255, 255, 255, 0.1)',
+  backdropFilter: 'blur(5px)',
+  borderRadius: '1rem',
+  padding: '1.5rem',
+  textAlign: 'center',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '1rem',
+  minHeight: '120px',
+  justifyContent: 'center'
+},
+skillLogo: {
+  width: '48px',
+  height: '48px',
+  objectFit: 'contain',
+  filter: 'brightness(0.9)'
+},
     projectsSection: {
       padding: '5rem 1rem',
       background: 'rgba(0, 0, 0, 0.2)'
@@ -464,11 +529,21 @@ const Portfolio = () => {
         <div style={styles.heroContent}>
           <div style={styles.profileImage}>
             <div style={styles.profileImageInner}>
-              <User size={80} color="#a855f7" />
+              {/* Replace the src below with your image path */}
+              <img 
+                src="/src/assets/nani.jpg" 
+                alt="Narender Reddy"
+                style={styles.profileImg}
+                onError={(e) => {
+                  // Fallback to User icon if image fails to load
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <User size={80} color="#a855f7" style={{display: 'none'}} />
             </div>
           </div>
-          
-          <h1 style={styles.heroTitle}>John Doe</h1>
+          <h1 style={styles.heroTitle}>Narender Reddy</h1>
           <p style={styles.heroSubtitle}>Full Stack Developer & Creative Problem Solver</p>
           <p style={styles.heroDescription}>
             Passionate about creating innovative web solutions that combine beautiful design with powerful functionality. 
@@ -477,7 +552,7 @@ const Portfolio = () => {
           
           <div style={styles.socialLinks}>
             <a 
-              href="https://github.com" 
+              href="https://github.com/Narender3011" 
               style={styles.socialLink}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -491,7 +566,7 @@ const Portfolio = () => {
               <Github size={24} />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/narender-reddy-b885a7377/"
               style={styles.socialLink}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -505,7 +580,7 @@ const Portfolio = () => {
               <Linkedin size={24} />
             </a>
             <a 
-              href="mailto:john@example.com" 
+              href="mailto:narenderreddy3050@gmail.com" 
               style={styles.socialLink}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -544,14 +619,14 @@ const Portfolio = () => {
               My Story
             </h3>
             <p style={styles.aboutText}>
-              I'm a passionate full-stack developer with over 3 years of experience creating 
-              web applications that solve real-world problems. My journey began with curiosity 
-              about how websites work, and it evolved into a deep love for crafting digital experiences.
-            </p>
-            <p style={styles.aboutText}>
-              I specialize in modern JavaScript frameworks and have a keen eye for user experience. 
-              When I'm not coding, you can find me exploring new technologies, contributing to open 
-              source projects, or sharing knowledge with the developer community.
+             Hi, I'm Narender Reddy, a passionate and curious student at Malla Reddy University. I’ve always believed that learning is a lifelong journey, and every mistake is a valuable lesson in disguise.
+
+My interest lies in exploring new things, whether it's a new technology, concept, or challenge. I enjoy understanding how things work and love the process of figuring things out—especially when it pushes me out of my comfort zone.
+
+What drives me most is the desire to grow through experience.</p>
+ <p style={styles.aboutText}>I don’t shy away from failure; instead, I take it as a stepping stone to learn, adapt, and improve. Whether it's coding, solving real-world problems, or collaborating with others on creative projects, I’m always eager to dive in and give my best.
+
+I’m on a mission to become not just a better student, but a better thinker and problem-solver—someone who builds meaningful things and keeps evolving along the way.
             </p>
           </div>
           
@@ -560,23 +635,34 @@ const Portfolio = () => {
               Skills & Technologies
             </h3>
             <div style={styles.skillsGrid}>
-              {skills.map((skill, index) => (
-                <div 
-                  key={skill}
-                  style={styles.skillItem}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-                    e.target.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = 'rgba(255, 255, 255, 0.1)';
-                    e.target.style.transform = 'scale(1)';
-                  }}
-                >
-                  <span style={{ fontSize: '0.875rem', fontWeight: '500' }}>{skill}</span>
-                </div>
-              ))}
-            </div>
+  {skills.map((skill, ) => (
+    <div 
+      key={skill.name}
+      style={styles.skillItem}
+      onMouseEnter={(e) => {
+        e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+        e.target.style.transform = 'scale(1.05)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+        e.target.style.transform = 'scale(1)';
+      }}
+    >
+      <img 
+        src={skill.logo} 
+        alt={skill.name}
+        style={styles.skillLogo}
+        onError={(e) => {
+          // Fallback to text if logo fails to load
+          e.target.style.display = 'none';
+        }}
+      />
+      <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#d1d5db' }}>
+        {skill.name}
+      </span>
+    </div>
+  ))}
+</div>
           </div>
         </div>
       </section>
@@ -586,7 +672,7 @@ const Portfolio = () => {
         <h2 style={styles.sectionTitle}>Featured Projects</h2>
         
         <div style={styles.projectsGrid}>
-          {projects.map((project, index) => (
+          {projects.map((project,) => (
             <div 
               key={project.title}
               style={styles.projectCard}
@@ -648,7 +734,7 @@ const Portfolio = () => {
           
           <div style={styles.contactLinks}>
             <a 
-              href="mailto:john@example.com"
+              href="mailto:narenderreddy3050@gmail.com"
               style={styles.contactLink}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -660,11 +746,11 @@ const Portfolio = () => {
               }}
             >
               <Mail size={20} />
-              <span>john@example.com</span>
+              <span>narenderreddy3050@gmail.com</span>
             </a>
             
             <a 
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/narender-reddy-b885a7377"
               style={styles.contactLink}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -706,7 +792,7 @@ const Portfolio = () => {
 
       {/* Footer */}
       <footer style={styles.footer}>
-        <p>© 2025 John Doe. Built with React and lots of ☕</p>
+        <p>© 2025 Narender reddy. Built with React and lots of ☕</p>
       </footer>
     </div>
   );
